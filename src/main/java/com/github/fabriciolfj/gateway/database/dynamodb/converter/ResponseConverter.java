@@ -1,4 +1,4 @@
-package com.github.fabriciolfj.providers.database.dynamodb.converter;
+package com.github.fabriciolfj.gateway.database.dynamodb.converter;
 
 import software.amazon.awssdk.services.dynamodb.model.AttributeValue;
 

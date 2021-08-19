@@ -1,8 +1,8 @@
-package com.github.fabriciolfj.providers.database.dynamodb.builder;
+package com.github.fabriciolfj.gateway.database.dynamodb.builder;
 
 
 import com.github.fabriciolfj.domain.model.Product;
-import com.github.fabriciolfj.providers.database.dynamodb.definition.ProductDynamoDbDefinition;
+import com.github.fabriciolfj.gateway.database.dynamodb.definition.ProductDynamoDbDefinition;
 import software.amazon.awssdk.services.dynamodb.model.AttributeValue;
 import software.amazon.awssdk.services.dynamodb.model.PutItemRequest;
 import software.amazon.awssdk.utils.StringUtils;
@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
-import static com.github.fabriciolfj.providers.database.dynamodb.definition.ProductDynamoDbDefinition.*;
+import static com.github.fabriciolfj.gateway.database.dynamodb.definition.ProductDynamoDbDefinition.*;
 
 public class ProductPutItemBuilder {
 

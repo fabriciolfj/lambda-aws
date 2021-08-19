@@ -2,9 +2,9 @@ package com.github.fabriciolfj.business.usercase;
 
 import com.github.fabriciolfj.business.FindProducts;
 import com.github.fabriciolfj.domain.exceptions.BussinessException;
-import com.github.fabriciolfj.gateway.ProductRepository;
-import com.github.fabriciolfj.providers.database.repository.ProductRepositoryImpl;
-import com.github.fabriciolfj.providers.http.ProductProvider;
+import com.github.fabriciolfj.business.ProductRepository;
+import com.github.fabriciolfj.gateway.database.repository.ProductRepositoryImpl;
+import com.github.fabriciolfj.gateway.providers.ProductProvider;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j

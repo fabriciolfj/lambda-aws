@@ -1,10 +1,10 @@
-package com.github.fabriciolfj.providers.database.repository;
+package com.github.fabriciolfj.gateway.database.repository;
 
 import com.github.fabriciolfj.config.DynamoDbClientConfigLocal;
 import com.github.fabriciolfj.domain.model.Product;
-import com.github.fabriciolfj.gateway.ProductRepository;
-import com.github.fabriciolfj.providers.database.dynamodb.builder.ProductPutItemBuilder;
-import com.github.fabriciolfj.providers.database.dynamodb.converter.ProductResponseConverter;
+import com.github.fabriciolfj.business.ProductRepository;
+import com.github.fabriciolfj.gateway.database.dynamodb.builder.ProductPutItemBuilder;
+import com.github.fabriciolfj.gateway.database.dynamodb.converter.ProductResponseConverter;
 import software.amazon.awssdk.services.dynamodb.DynamoDbClient;
 import software.amazon.awssdk.services.dynamodb.model.PutItemRequest;
 import software.amazon.awssdk.services.dynamodb.model.ScanRequest;
@@ -12,7 +12,7 @@ import software.amazon.awssdk.services.dynamodb.model.ScanRequest;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static com.github.fabriciolfj.providers.database.dynamodb.definition.ProductDynamoDbDefinition.TABLE_NAME;
+import static com.github.fabriciolfj.gateway.database.dynamodb.definition.ProductDynamoDbDefinition.TABLE_NAME;
 
 public class ProductRepositoryImpl implements ProductRepository {
 

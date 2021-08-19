@@ -1,4 +1,4 @@
-package com.github.fabriciolfj.providers.http;
+package com.github.fabriciolfj.gateway.providers.http;
 
 import java.io.IOException;
 import java.net.URI;

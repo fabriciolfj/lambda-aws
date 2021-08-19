@@ -1,9 +1,10 @@
-package com.github.fabriciolfj.providers.http;
+package com.github.fabriciolfj.gateway.providers;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.fabriciolfj.business.FindProducts;
 import com.github.fabriciolfj.domain.model.Product;
+import com.github.fabriciolfj.gateway.providers.http.ProductHttp;
 import com.github.fabriciolfj.util.JsonMapperFactory;
 import com.github.fabriciolfj.util.ProductUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -16,7 +17,7 @@ public class ProductProvider implements FindProducts {
     private final ProductHttp http;
     private final ObjectMapper objectMapper;
 
-    public ProductProvider () {
+    public ProductProvider() {
         this.http = new ProductHttp();
         objectMapper = JsonMapperFactory.getInstance();
     }

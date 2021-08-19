@@ -1,4 +1,4 @@
-package com.github.fabriciolfj.gateway;
+package com.github.fabriciolfj.business;
 
 import com.github.fabriciolfj.domain.model.Product;
 

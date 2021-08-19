@@ -6,6 +6,5 @@ import java.util.List;
 
 public interface FindProducts {
 
-
     List<Product> process() throws Exception;
 }

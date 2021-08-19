@@ -1,4 +1,4 @@
-package com.github.fabriciolfj.providers.database.dynamodb.definition;
+package com.github.fabriciolfj.gateway.database.dynamodb.definition;
 
 public enum ProductDynamoDbDefinition {
     TABLE_NAME("Product"),
@@ -11,7 +11,7 @@ public enum ProductDynamoDbDefinition {
         this.value = value;
     }
 
-    public String getValue() {
+    public String  getValue() {
         return value;
     }
 }
