@@ -1,0 +1,23 @@
+
+AWSTemplateFormatVersion: "2010-09-09"
+Description: A sample template for creating a stack with a bucket and a DynamoDB table.
+Resources:
+  S3BucketForPoc:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: io.pratik.profileimages
+  DynamoDBTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: Product
+      AttributeDefinitions:
+        -
+          AttributeName: "ID"
+          AttributeType: "S"
+      KeySchema:
+        -
+          AttributeName: "ID"
+          KeyType: "HASH"
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5
