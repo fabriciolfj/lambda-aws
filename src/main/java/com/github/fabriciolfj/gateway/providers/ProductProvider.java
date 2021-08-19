@@ -23,7 +23,7 @@ public class ProductProvider implements FindProducts {
     }
 
     @Override
-    public List<Product> process() throws Exception{
+    public List<Product> process() throws Exception {
         try{
             var result = findAll();
             log.info("Return json products: {}", result);
