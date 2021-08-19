@@ -35,7 +35,6 @@ public class ProductProvider implements FindProducts {
         }
     }
 
-
     private String findAll() throws Exception {
         try {
             return http.request(ProductUtil.getUrl());
