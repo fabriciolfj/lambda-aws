@@ -8,7 +8,7 @@ public class JsonMapperFactory {
 
     private JsonMapperFactory() {}
 
-    public static ObjectMapper getInstance() {
+    public synchronized static ObjectMapper getInstance() {
         if (instance == null) {
             instance = new ObjectMapper();
         }

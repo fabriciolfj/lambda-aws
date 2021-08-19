@@ -12,7 +12,7 @@ public class ConfigurationProperties {
 
     private ConfigurationProperties() { }
 
-    public static Properties find() {
+    public synchronized static Properties find() {
         if (properties != null) {
             return properties;
         }

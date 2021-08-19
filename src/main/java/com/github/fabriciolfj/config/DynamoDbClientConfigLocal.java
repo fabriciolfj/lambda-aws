@@ -14,7 +14,7 @@ public class DynamoDbClientConfigLocal {
 
     private static DynamoDbClient instance;
 
-    public static DynamoDbClient getInstance() {
+    public synchronized static DynamoDbClient getInstance() {
         if (instance == null) {
             instance = dynamoDbClientLocal();
         }
