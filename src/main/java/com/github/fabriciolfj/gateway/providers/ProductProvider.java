@@ -25,21 +25,12 @@ public class ProductProvider implements FindProducts {
     @Override
     public List<Product> process() throws Exception {
         try{
-            var result = findAll();
+            var result = http.request(ProductUtil.getUrl());
             log.info("Return json products: {}", result);
 
             return objectMapper.readValue(result, new TypeReference<>() {});
         } catch (Exception e) {
             log.error("Fail mapper to json. Details: {}", e.getMessage());
-            throw e;
-        }
-    }
-
-    private String findAll() throws Exception {
-        try {
-            return http.request(ProductUtil.getUrl());
-        } catch (Exception e) {
-            log.error("Fail request. Details: {}", e.getMessage());
             throw e;
         }
     }
