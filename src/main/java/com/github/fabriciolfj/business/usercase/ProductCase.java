@@ -19,14 +19,14 @@ public class ProductCase {
             var products = find.process();
             log.info("Products: {}", products.size());
             repo.save(products);
-            checkSave();
+            checkSave(products.get(0).getId());
         } catch (Exception e) {
             throw new BussinessException(e.getMessage());
         }
     }
 
-    private void checkSave() {
-        repo.findAll()
+    private void checkSave(final String id) {
+        repo.findById(id)
                 .stream()
                 .forEach(p -> log.info("Product save: {}", p.toString()));
     }
