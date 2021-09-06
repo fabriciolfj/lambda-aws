@@ -40,6 +40,7 @@ public class ProductRepositoryImpl implements ProductRepository {
     }
 
     private void execute(final Product product) {
+        product.enrichDetails();
         final PutItemRequest request = ProductPutItemBuilder.builder()
                 .withEntity(product)
                 .build();

@@ -1,8 +1,11 @@
 package com.github.fabriciolfj.gateway.database.dynamodb.builder;
 
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.fabriciolfj.domain.model.Product;
 import com.github.fabriciolfj.gateway.database.dynamodb.definition.ProductDynamoDbDefinition;
+import com.github.fabriciolfj.util.JsonMapperFactory;
 import software.amazon.awssdk.services.dynamodb.model.AttributeValue;
 import software.amazon.awssdk.services.dynamodb.model.PutItemRequest;
 import software.amazon.awssdk.utils.StringUtils;
@@ -17,6 +20,7 @@ import static com.github.fabriciolfj.gateway.database.dynamodb.definition.Produc
 public class ProductPutItemBuilder {
 
     private PutItemRequest.Builder  putItemRequest;
+    private ObjectMapper mapper = JsonMapperFactory.getInstance();
 
     public static ProductPutItemBuilder builder() {
         return new ProductPutItemBuilder();
@@ -30,6 +34,17 @@ public class ProductPutItemBuilder {
 
         Optional.ofNullable(product.getName())
                 .ifPresent(value -> attributes.put(NAME.getValue(), withS(value)));
+
+        Optional.ofNullable(product.getDetails())
+                .ifPresent(value -> {
+                    String json = null;
+                    try {
+                        json = mapper.writeValueAsString(value);
+                    } catch (JsonProcessingException e) {
+                        e.printStackTrace();
+                    }
+                    attributes.put(DETAILS.getValue(), withS(json));
+                });
 
         putItemRequest = PutItemRequest.builder().item(attributes);
         return this;
