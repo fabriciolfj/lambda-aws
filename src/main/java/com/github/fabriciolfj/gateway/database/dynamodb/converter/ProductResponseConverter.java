@@ -1,5 +1,6 @@
 package com.github.fabriciolfj.gateway.database.dynamodb.converter;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.fabriciolfj.domain.model.Details;
 import com.github.fabriciolfj.domain.model.Product;
@@ -30,10 +31,13 @@ public class ProductResponseConverter implements ResponseConverter<Product> {
                 .ifPresent(v -> {
                     List<Details> detail = new ArrayList<>();
                     try {
-                        detail = mapper.readValue(v.s(), List.class);
+                        TypeReference<List<Details>> mapType = new TypeReference<>() {};
+                        detail = mapper.readValue(v.s(), mapType);
                     } catch (Exception e) {
 
                     }
+
+                    detail.stream().forEach(d -> System.out.println(d));
                     product.setDetails(detail);
                 });
 
