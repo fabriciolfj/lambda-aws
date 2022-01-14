@@ -6,11 +6,14 @@ import com.github.fabriciolfj.business.ProductRepository;
 import com.github.fabriciolfj.gateway.database.dynamodb.builder.ProductPutItemBuilder;
 import com.github.fabriciolfj.gateway.database.dynamodb.converter.ProductResponseConverter;
 import software.amazon.awssdk.services.dynamodb.DynamoDbClient;
+import software.amazon.awssdk.services.dynamodb.model.AttributeValue;
 import software.amazon.awssdk.services.dynamodb.model.PutItemRequest;
 import software.amazon.awssdk.services.dynamodb.model.QueryRequest;
 import software.amazon.awssdk.services.dynamodb.model.ScanRequest;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -33,7 +36,14 @@ public class ProductRepositoryImpl implements ProductRepository {
 
     @Override
     public List<Product> findAll() {
+        final Map<String, AttributeValue> filter = new HashMap<>();
+
+        filter.put(":value", AttributeValue.builder().s("Veneno").build());
+
+
         return dynamoDbClient.scan(ScanRequest.builder()
+                        .filterExpression("nome = :value")
+                        .expressionAttributeValues(filter)
                 .tableName(TABLE_NAME.getValue()).build())
                 .items()
                 .stream()

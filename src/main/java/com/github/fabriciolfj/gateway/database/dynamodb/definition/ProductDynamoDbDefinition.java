@@ -3,7 +3,7 @@ package com.github.fabriciolfj.gateway.database.dynamodb.definition;
 public enum ProductDynamoDbDefinition {
     TABLE_NAME("Product"),
     PRIMARY_KEY("ID"),
-    NAME("name"),
+    NAME("nome"),
     DETAILS("details");
 
     private final String value;
