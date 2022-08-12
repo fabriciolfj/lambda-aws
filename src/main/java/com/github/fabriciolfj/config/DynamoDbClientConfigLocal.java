@@ -24,12 +24,12 @@ public class DynamoDbClientConfigLocal {
 
     private static DynamoDbClient dynamoDbClientLocal() {
         final String url = AwsUtil.getDynamoUrl();
-        final AwsCredentials awsCredentials = AwsBasicCredentials.create("12", "12");
+        final AwsCredentials awsCredentials = AwsBasicCredentials.create("1", "1");
         final AwsCredentialsProvider awsCredentialsProvider = StaticCredentialsProvider
                 .create(awsCredentials);
         return DynamoDbClient.builder()
                 .credentialsProvider(awsCredentialsProvider)
-                .region(Region.of("us-east-2"))
+                .region(Region.of("us-east-1"))
                 .endpointOverride(URI.create(url))
                 .build();
     }

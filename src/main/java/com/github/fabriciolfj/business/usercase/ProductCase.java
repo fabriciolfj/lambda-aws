@@ -8,6 +8,7 @@ import com.github.fabriciolfj.gateway.database.repository.ProductRepositoryImpl;
 import com.github.fabriciolfj.gateway.providers.ProductProvider;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -23,19 +24,21 @@ public class ProductCase {
             var products = productsFake();//find.process();
             log.info("Products: {}", products.size());
             repo.save(products);
-            checkSave(products.get(0).getId());
         } catch (Exception e) {
             throw new BussinessException(e.getMessage());
         }
     }
 
     private List<Product> productsFake() {
-        return Arrays.asList(
-                new Product("4", "Veneno", null),
-        new Product("5", "açucar", null),
-        new Product("6", "Veneno", null),
-        new Product("7", "leite", null)
-        );
+        var index = 0;
+        final List<Product> products = new ArrayList<>();
+
+        while (index < 1000) {
+            products.add(new Product(String.valueOf(index), "teste " + index, null));
+            index++;
+        }
+
+        return products;
     }
 
     public List<Product> listAll() {
